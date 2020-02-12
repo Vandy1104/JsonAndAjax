@@ -63,7 +63,7 @@ $(document).ready(function(){
 //Ajax method
 
 $.ajax({
-  url: 'js/mock_data.json',
+  url: 'https://my.api.mockaroo.com/plant.json?key=4503c8e0',
   type: 'GET',
   data: 'json',
   success: function(data){
@@ -71,13 +71,16 @@ $.ajax({
     var i;
     for (i = 0; i<data.length; i++){
       document.getElementById('result').innerHTML +=
-      '<div class="col col-sm-6 col-md-4 col-lg-4 mx-2 border border-primary">' +
-      '<h1>' + data[i].first_name +
-      data[i].last_name + '</h1>' +
-      '<h2>' + data[i].gender + '</h2>' +
-      '<h3>' + data[i].email + '</h3>' +
-      '<img class="img-thumbnail" src="' + data[i].avatar + '"alt="Avatar">'
-      '</div>';
+      '<div class="container m-2 mx-2 card col col-sm-6 col-md-3 col-lg-3">' +
+  '<img src="' + data[i].image + '" class="plant_img" alt="plant">' +
+  '<div class="card-body">' +
+    '<h5 class="card-title">Mockaroo APIs</h5>' +
+    '<p class="card-text">' + data[i].id + '</p>' +
+    '<p class="card-text">' + data[i].plant_name + '</p>' +
+    '<p class="card-text">' + data[i].scientific_name + '</p>' +
+    '<p class="card-text">' + data[i].plant_family + '</p>' +
+  '</div>'
+'</div>'
     }
   }, //Success ends
   error: function(){
